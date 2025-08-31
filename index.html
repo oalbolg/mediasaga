@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="MediaSaga - A blog exploring stories, ideas, and insights across media and culture."
+    />
+    <meta
+      name="keywords"
+      content="MediaSaga, blog, media, culture, stories, insights"
+    />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="MediaSaga Team" />
+    <title>MediaSaga - Stories, Ideas, and Insights</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-900 text-gray-100 font-sans">
+    <header
+      class="bg-gray-950 border-b border-gray-800 sticky top-0 z-50 py-4 px-6"
+    >
+      <div class="max-w-5xl mx-auto flex justify-between items-center">
+        <a
+          href="/index.html"
+          class="text-2xl font-bold text-green-400 hover:text-green-300"
+          >MediaSaga</a
+        >
+        <nav class="space-x-6">
+          <a href="#home" class="text-gray-300 hover:text-green-400">Home</a>
+          <a href="#categories" class="text-gray-300 hover:text-green-400"
+            >Categories</a
+          >
+          <a href="#about" class="text-gray-300 hover:text-green-400">About</a>
+          <a href="#contact" class="text-gray-300 hover:text-green-400"
+            >Contact</a
+          >
+        </nav>
+      </div>
+    </header>
+    <section
+      class="py-16 px-6 text-center bg-gradient-to-b from-gray-950 to-gray-900"
+    >
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">
+          Welcome to MediaSaga
+        </h1>
+        <p class="text-lg md:text-xl text-gray-400">
+          Discover stories, ideas, and insights that shape the world of media
+          and culture.
+        </p>
+      </div>
+    </section>
+    <section class="max-w-5xl mx-auto px-6 py-8" id="posts-container">
+      <!-- Posts will be dynamically inserted here -->
+    </section>
+    <footer
+      class="bg-gray-950 border-t border-gray-800 py-6 text-center text-gray-500"
+    >
+      <p>&copy; 2025 MediaSaga. All rights reserved.</p>
+    </footer>
+    <script>
+      // Sample post data (in a real application, this could come from an API)
+      const posts = [
+        {
+          id: 1,
+          title: "Exploring the Future of Digital Media",
+          excerpt:
+            "Dive into the trends shaping the next generation of storytelling and content creation.",
+          author: "Jane Doe",
+          date: "Oct 10, 2025",
+          image: "https://www.dealbyethan.com/includes/templates/dealbyethan/images/clothing2.jpg",
+          url:"/inclusive-men-s-apparel.html",
+        },
+      ];
+
+      // Function to render posts
+      function renderPosts() {
+        const container = document.getElementById("posts-container");
+        container.innerHTML = posts
+          .map(
+            (post) => `
+        <article class="flex bg-gray-800 rounded-lg overflow-hidden mb-6 hover:-translate-y-1 transition-transform duration-200">
+          <img src="${post.image}" alt="Post Image" class="w-48 h-36 object-cover">
+          <div class="p-6 flex-1">
+            <h2 class="text-xl font-semibold mb-2"><a href="${post.url}">${post.title}</a></h2>
+            <p class="text-gray-400 mb-4">${post.excerpt}</p>
+            <div class="text-gray-500 text-sm">By ${post.author} | ${post.date}</div>
+          </div>
+        </article>
+      `
+          )
+          .join("");
+      }
+
+      // Function to add a new post
+      function addPost(title, excerpt, author, date, image) {
+        posts.push({
+          id: posts.length + 1,
+          title,
+          excerpt,
+          author,
+          date,
+          image: image || "https://via.placeholder.com/200x150",
+        });
+        renderPosts();
+      }
+
+      // Initialize posts on page load
+      document.addEventListener("DOMContentLoaded", () => {
+        renderPosts();
+        // Example: Add a new post after 2 seconds (for demo purposes)
+        setTimeout(() => {}, 2000);
+      });
+    </script>
+  </body>
+</html>
